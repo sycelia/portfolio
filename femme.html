@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>femme</title>
+    <link rel="stylesheet" type="text/css" href="femme.css">
+    <link rel="stylesheet" type="text/css" href="femme.min.css">
+</head>
+
+<body>
+
+    <h2>nos produits et tenues</h2>
+    </div>
+    </article>
+    <section>
+        <div class="gallery" id="gallery">
+            <div class="gallery-item">
+                <div class="content"><img src="30.jpg" alt="30.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="24.jpg" alt="24.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="31.jpg" alt="31.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="32.jpg" alt="32.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="40.jpg" alt="40.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="50.jpg" alt="50.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="56.jpg" alt="56.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="57.jpg" alt="57.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="25.jpg" alt="25.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="32.jpg" alt="32.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="26.jpg" alt="26.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="51.jpg" alt="51.jpg"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="content"><img src="Esther et morgane.png" alt="Esther et morgane.png"></div>
+            </div>
+        </div>
+        <script>
+            var gallery = document.querySelector('#gallery');
+            var getVal = function(elem, style) {
+                return parseInt(window.getComputedStyle(elem).getPropertyValue(style));
+            };
+            var getHeight = function(item) {
+                return item.querySelector('.content').getBoundingClientRect().height;
+            };
+            var resizeAll = function() {
+                var altura = getVal(gallery, 'grid-auto-rows');
+                var gap = getVal(gallery, 'grid-row-gap');
+                gallery.querySelectorAll('.gallery-item').forEach(function(item) {
+                    var el = item;
+                    el.style.gridRowEnd = "span " + Math.ceil((getHeight(item) + gap) / (altura + gap));
+                });
+            };
+            gallery.querySelectorAll('img').forEach(function(item) {
+                item.classList.add('byebye');
+                if (item.complete) {
+                    console.log(item.src);
+                } else {
+                    item.addEventListener('load', function() {
+                        var altura = getVal(gallery, 'grid-auto-rows');
+                        var gap = getVal(gallery, 'grid-row-gap');
+                        var gitem = item.parentElement.parentElement;
+                        gitem.style.gridRowEnd = "span " + Math.ceil((getHeight(gitem) + gap) / (altura + gap));
+                        item.classList.remove('byebye');
+                    });
+                }
+            });
+            window.addEventListener('resize', resizeAll);
+            gallery.querySelectorAll('.gallery-item').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    item.classList.toggle('full');
+                });
+            });
+        </script>
+        <footer>
+            <div id="rectangle">
+                <h4>Merci pour votre visite et à bientôt</h4>
+            </div>
+        </footer>
+</body>
+
+</html>
+
+</section>
+</body>
+
+</html>
